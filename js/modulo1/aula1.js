@@ -4,6 +4,8 @@
 function log(value){
     console.log(value);
 }
+log("teste1")
+
 
 //funções anonimas (atribuida a uma var ou passada como parametro pra outra function)
 var log2 = function(value){
@@ -14,7 +16,6 @@ var sum = function(a, b){
     return a+b;
 }
 
-log('teste 1');
 log2('teste 2');
 console.log(sum(10, 10));
 
@@ -43,6 +44,7 @@ var obj = {
 }
 //return de um obj
 var objt = () => ({'teste': 123})//LOG objt
+console.log(objt)
 
 //nao da pra fazer como AF -> funcoes construtoras
 function car(){
@@ -51,7 +53,8 @@ function car(){
 console.log(new car())
 
 //não é possivel com AF -> hosting
-log5('teste 3')
+log5('teste hosting')
+//var log5 = (value)=> (console.log(value))
 function log5(value){
     console.log(value)
 }
@@ -61,10 +64,11 @@ function log5(value){
 var objt1 = {
     //contexto de invocação
     showContext: function showContext(){
-        this.log('teste');
-        //console.log(this);
+        //this.log('teste');
         //this = objt
         setTimeout( () => {
+            //console.log(this);
+            this.log('teste this')
             this.log('depois de 1 seg')
             }, 1000
         );
@@ -75,4 +79,4 @@ var objt1 = {
     }
 }
 objt1.showContext()
-objt1.log()
+objt1.log(123)
