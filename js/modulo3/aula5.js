@@ -98,4 +98,4 @@ function* generateSequence2(){
 let sequence = [0, ...generateSequence2()]
 console.log(sequence)
 
-//com isso é possivel criar senhas, gerando caracteres, numeros e letras, e fazer uma combinação entre eles 
+//com isso é possivel criar senhas, gerando caracteres, numeros e letras, e fazer uma combinação entre eles3 
