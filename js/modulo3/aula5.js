@@ -30,22 +30,23 @@ const it = arr[Symbol.iterator]()
 //ou com es6 um for while
 for (let value of arr){
     console.log(value)
-}
+} // 1 2 3 4 5
+
 console.log(it.next())
 console.log(it.next())
 console.log(it.next())
 console.log(it.next())
 //interator -> interface pra consumir passo a passo uma estrutura de dados
 
-const objtLit = {
+const objtList = {
     values: [1,2,3,4],
-    [Symbol.iterator](){
+    [Symbol.iterator] () {
         //se quiser retornar os valores do values
-        let indi = 0;
+        let i = 0;
         return {
             next: () => {
-                i++
-                return{
+                i ++
+                return {
                     value: this.values[i-1],
                     done: i>this.values.length
                 }
@@ -55,7 +56,6 @@ const objtLit = {
 }
 
 const itd = objtList[Symbol.iterator]()
-
 console.log(itd.next())
 console.log(itd.next())
 console.log(itd.next())
@@ -71,4 +71,31 @@ function hello(){
 }
 hello()
 //se quisesse parar em alguma logica do fluxo
+//para criar um generator usa-se a sixtase:
+function* generateSequence(){
+    yield 1;
+    yield 2;
+    return 3;
+}
 
+let generator = generateSequence()
+console.log(generator.next())//one, value 1, done false
+console.log(generator.next())//two, value 2, done false
+console.log(generator.next())//three, value 3, done true
+
+//da para colocar em um loop de for..of:
+let generator2 = generateSequence()
+for(let value of generator2){
+    console.log(value)
+} //o loop nao mostra o tres porque a sequencia termina nele com o return, para mudar isso é só coloca-lo como yield
+
+//generators são iteraveis
+function* generateSequence2(){
+    yield 1;
+    yield 2;
+    yield 3;
+}
+let sequence = [0, ...generateSequence2()]
+console.log(sequence)
+
+//com isso é possivel criar senhas, gerando caracteres, numeros e letras, e fazer uma combinação entre eles 
